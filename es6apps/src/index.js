@@ -1,28 +1,51 @@
-// import { firstName,lastName,isActive,isEnabled,skills } from "./lib.js";
-
-
-// function main(){
-//   console.log(firstName,lastName)
-//   console.log(isActive)
-//   console.log(isEnabled())
-//   console.log(skills)
-
-// }
-// main()
-
-// import TodoService from "./todo-service.js";
+const getUser = (resolve, reject) => {
+    console.log('getUser is called')
+    let user = { name: 'admin' }
+    //    user = null
+    if (user) {
+        setTimeout(resolve, 1000, user)
+    } else {
+        setTimeout(reject, 1000, 'User not found')
+    }
+}
+const login = (user, resolve, reject) => {
+    console.log('login is called')
+    if (user.name === 'admin') {
+        setTimeout(resolve, 1000, 'login is success')
+    } else {
+        setTimeout(reject, 1000, 'login is failed')
+    }
+}
+const showdashbaord = (status, resolve, reject) => {
+    console.log('showdashbaord is called')
+    if (status === 'login is success') {
+        setTimeout(resolve, 1000, 'welcome to dashboard')
+    } else {
+        setTimeout(reject, 1000, 'welcome to guest')
+    }
+}
 
 // function main() {
-//     let todoService = new TodoService()
-//     console.log(todoService.findAll())
+//     getUser(user => {
+//         login(user, status => {
+//             showdashbaord(status, adminPage => {
+//                 console.log(adminPage)
+//             }, errPage => {
+//                 console.log(errPage)
+//             })
+//         }, err => {
+//             console.log(err)
+//         })
+//     }, err => {
+//         console.log(err)
+//     })
 // }
-// main()
-
-import Greeter, { name, message } from "./utils.js";
 
 function main(){
-  let greet = new Greeter();
-  console.log(greet.sayGreet())
-  console.log(name,message)
+    getUser((user)=>{
+        login(user, (status) => {
+
+        })
+    })
 }
 main()
